@@ -13,8 +13,9 @@
       <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" *ngFor="let candy of house.bonbons">
         <ngb-panel>
           <ng-template ngbPanelTitle>
+            <img class="card-img-top img-thumbnail img-houses" src="{{ findCandyPic(candy.name) }}" alt="Card image cap Responsive image">
             <span>&#9733; <b>{{ candy.name }}</b> &#9733;</span>
-            <i class="fas fa-shopping-bag" (click)="addToBag()"></i>
+            <img class="img-houses" src="../../assets/images/halloween-151422_1280.png" alt="Card image cap Responsive image">
           </ng-template>
           <ng-template ngbPanelContent>
             <p><strong>Allergènes</strong>&nbsp;: {{ findCandyAllergen(candy.name) }}</p>

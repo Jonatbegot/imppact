@@ -40,6 +40,11 @@ export class HouseComponent implements OnInit {
     return candy.nutriments.energy;
   }
 
+  findCandyPic(candyName) {
+    const candy = this.products.find(product => product.product_name === candyName);
+    return candy.image_url;
+  }
+
   addToBag() {
   }
 }
