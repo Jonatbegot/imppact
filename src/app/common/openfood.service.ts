@@ -21,6 +21,6 @@ export class OpenfoodService {
 
   readById(id: string): Observable<any> {
 
-    return this.service.get<any>(`https://sll-api.openfoodfacts.org/category/candies/${id}`);
+    return this.service.get<any>(`https://sll-api.openfoodfacts.org/category/candies/${id}.json`);
   }
 }

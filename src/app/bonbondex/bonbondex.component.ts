@@ -11,14 +11,23 @@ export class BonbondexComponent implements OnInit {
   products: any;
   page = 1;
 
-constructor(private service: OpenfoodService) { }
+  constructor(private service: OpenfoodService) { }
 
-ngOnInit() {
-  this.service.readAll().subscribe(res => {
-    this.products = res.products;
-    console.log(this.products);
-  });
+  ngOnInit() {
+    this.service.readAll().subscribe(res => {
+      console.log(res);
+      this.products = res.products;
+      console.log(this.products);
+    });
 
-}
+  }
 
+  onPageChange($event) {
+    this.page = $event;
+
+    this.service.readById($event).subscribe(res => {
+      this.products = res.products;
+      console.log(this.products);
+    });
+  }
 }
