@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularOpenlayersModule } from 'ngx-openlayers';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { BonbondexComponent } from './bonbondex/bonbondex.component';
@@ -16,7 +17,8 @@ import { BonbondexComponent } from './bonbondex/bonbondex.component';
     FormsModule,
     BrowserModule,
     HttpClientModule,
-    AngularOpenlayersModule
+    AngularOpenlayersModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

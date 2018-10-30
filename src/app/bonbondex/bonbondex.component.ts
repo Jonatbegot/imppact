@@ -9,6 +9,7 @@ import { OpenfoodService } from 'src/app/common/openfood.service';
 export class BonbondexComponent implements OnInit {
 
   products: any;
+  page = 1;
 
 constructor(private service: OpenfoodService) { }
 
