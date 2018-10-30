@@ -23,4 +23,16 @@ export class OpenfoodService {
 
     return this.service.get<any>(`https://sll-api.openfoodfacts.org/category/candies/${id}.json`);
   }
+
+
+  getProductsNames() {
+    let list = [];
+    for (let i = 0; i < this.products.length; i++) {
+      list.push(this.products[i].productName);
+    }
+    return list;
+
+  }
 }
+
+

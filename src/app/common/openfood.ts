@@ -7,4 +7,5 @@ export class Product {
   allergens: string[];
   nutrients: Nutrients;
   images: string;
+  productName: any;
 }

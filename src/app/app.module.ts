@@ -9,12 +9,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { BonbondexComponent } from './bonbondex/bonbondex.component';
 import { HouseComponent } from './house/house.component';
+import { FiltreComponent } from './filtre/filtre.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BonbondexComponent,
-    HouseComponent
+    HouseComponent,
+    FiltreComponent
   ],
   imports: [
     FormsModule,
