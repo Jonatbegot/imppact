@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { OpenfoodService } from './common/openfood.service';
+import { Component, OnInit } from '@angular/core';
 
 declare var ol: any;
 @Component({
@@ -6,13 +7,19 @@ declare var ol: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  latitude: number = 18.5204;
-  longitude: number = 73.8567;
+export class AppComponent implements OnInit {
+  latitude: number = 47.3867;
+  longitude: number = 0.6886;
 
   map: any;
+  constructor (private service: OpenfoodService) {
+
+  }
 
   ngOnInit() {
+    console.log ('b');
+    console.log('cest la' + this.service.readAll());
+
     var mousePositionControl = new ol.control.MousePosition({
       coordinateFormat: ol.coordinate.createStringXY(4),
       projection: 'EPSG:4326',
@@ -46,16 +53,17 @@ export class AppComponent {
       console.log(args.coordinate);
       var lonlat = ol.proj.transform(args.coordinate, 'EPSG:3857', 'EPSG:4326');
       console.log(lonlat);
-      
+
       var lon = lonlat[0];
       var lat = lonlat[1];
       alert(`lat: ${lat} long: ${lon}`);
     });
+    this.setCenter();
   }
 
   setCenter() {
     var view = this.map.getView();
     view.setCenter(ol.proj.fromLonLat([this.longitude, this.latitude]));
-    view.setZoom(8);
+    view.setZoom(14);
   }
 }
