@@ -13,17 +13,15 @@ export class AppComponent implements OnInit {
   longitude: number = 0.6886;
 
   map: any;
-  constructor (private service: OpenfoodService, private service: AdressesService ) {
+  constructor ( private service: AdressesService ) {
 
   }
 
   ngOnInit() {
 
-    this.service.readAll().subscribe(res => {
-      this.products = res.products;
-    });
+   
 
-    var mousePositionControl = new ol.control.MousePosition({
+    const mousePositionControl = new ol.control.MousePosition({
       coordinateFormat: ol.coordinate.createStringXY(4),
       projection: 'EPSG:4326',
       // comment the following two lines to have the mouse position

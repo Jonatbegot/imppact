@@ -14,13 +14,14 @@ export class AdressesService {
 
   }
 
-  readAll(): Observable<any> {
+  readAll(lat: number , lon: number): Observable<any> {
 
-    return this.service.get<any>('http://nominatim.openstreetmap.org/reverse.json');
+    // tslint:disable-next-line:max-line-length
+    return this.service.get<any>(`http://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`);
   }
 
   readById(id: string): Observable<any> {
 
-    return this.service.get<any>(`http://nominatim.openstreetmap.org/reverse${id}`);
+    return this.service.get<any>(`http://nominatim.openstreetmap.org/reverse/format/lat/lon/zoom/${id}`);
   }
 }
