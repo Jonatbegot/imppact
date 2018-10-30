@@ -1,8 +1,0 @@
-{
-  "/openfood/": {
-    "target": "https://ssl-api.openfoodfacts.org/",
-    "secure": false,
-    "logLevel": "debug",
-    "changeOrigin": true
-  }
-}
