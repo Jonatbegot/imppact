@@ -2,6 +2,8 @@ import { AdressesService } from './common/adresses.service';
 import { OpenfoodService } from './common/openfood.service';
 import { Component, OnInit } from '@angular/core';
 
+import * as L from 'leaflet';
+
 declare var ol: any;
 @Component({
   selector: 'app-root',
@@ -11,9 +13,11 @@ declare var ol: any;
 export class AppComponent implements OnInit {
   latitude: number = 47.3867;
   longitude: number = 0.6886;
+  myIcon: any;
+  products: any;
 
   map: any;
-  constructor (private service: OpenfoodService, private service: AdressesService ) {
+  constructor (private service: OpenfoodService) {
 
   }
 
@@ -23,7 +27,7 @@ export class AppComponent implements OnInit {
       this.products = res.products;
     });
 
-    var mousePositionControl = new ol.control.MousePosition({
+    const mousePositionControl = new ol.control.MousePosition({
       coordinateFormat: ol.coordinate.createStringXY(4),
       projection: 'EPSG:4326',
       // comment the following two lines to have the mouse position
@@ -54,19 +58,41 @@ export class AppComponent implements OnInit {
 
     this.map.on('click', function (args) {
       console.log(args.coordinate);
-      var lonlat = ol.proj.transform(args.coordinate, 'EPSG:3857', 'EPSG:4326');
+      const lonlat = ol.proj.transform(args.coordinate, 'EPSG:3857', 'EPSG:4326');
       console.log(lonlat);
 
-      var lon = lonlat[0];
-      var lat = lonlat[1];
+      const lon = lonlat[0];
+      const lat = lonlat[1];
       alert(`lat: ${lat} long: ${lon}`);
     });
+
     this.setCenter();
+
+    this.findMe();
+
   }
 
   setCenter() {
-    var view = this.map.getView();
+    const view = this.map.getView();
     view.setCenter(ol.proj.fromLonLat([this.longitude, this.latitude]));
     view.setZoom(14);
   }
+
+  findMe() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.showPosition(position);
+      });
+    } else {
+      alert('Geolocation is not supported by this browser.');
+    }
+  }
+
+  showPosition(position) {
+    this.latitude = position.coords.latitude;
+    this.longitude = position.coords.longitude;
+
+    this.setCenter();
+  }
+
 }
