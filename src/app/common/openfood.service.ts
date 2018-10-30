@@ -64,11 +64,11 @@ export class OpenfoodService {
 
   readAll(): Observable<any> {
 
-    return this.service.get<any>('/openfood/');
+    return this.service.get<any>('https://sll-api.openfoodfacts.org/category/candies.json');
   }
 
   readById(id: string): Observable<any> {
 
-    return this.service.get<any>(`/openfood/${id}`);
+    return this.service.get<any>(`https://sll-api.openfoodfacts.org/category/candies/${id}`);
   }
 }

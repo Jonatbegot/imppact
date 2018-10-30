@@ -17,8 +17,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log ('b');
-    console.log('cest la' + this.service.readAll());
+
+    this.service.readAll().subscribe(res => {
+      this.products = res.products;
+    });
 
     var mousePositionControl = new ol.control.MousePosition({
       coordinateFormat: ol.coordinate.createStringXY(4),
