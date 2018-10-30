@@ -10,6 +10,7 @@ declare var ol: any;
 export class AppComponent implements OnInit {
   latitude: number = 47.3867;
   longitude: number = 0.6886;
+  products: any;
 
   map: any;
   constructor (private service: OpenfoodService) {

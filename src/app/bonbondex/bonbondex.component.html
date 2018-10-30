@@ -1,0 +1,24 @@
+<p>
+  bonbondex works!
+</p>
+
+<div id='body'>
+  <div class="row" *ngFor="let product of products">
+    <div class="col-sm m-2">
+      <div class="card col-12 col-sm-6 col-lg-4 col-xl-3" style="max-width: 500px;">
+        <img class="m-2 card-img-top" src="{{ product.image_url }}" alt="Card image cap Responsive image">
+      </div>
+    </div>
+    <div class="col-sm m-2">
+      <h1>{{products.name}}</h1>
+      <hr>
+      <h3>Caractéristiques du produit : </h3>
+      <div>
+        <ul class="list-group">
+          <li class="list-group-item">Nom : {{ product.product_name }}</li>
+          <li class="list-group-item">Catégorie : {{ product.categories }}</li>
+          <li class="list-group-item">Allergènes : {{ product.allergens_tags }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
