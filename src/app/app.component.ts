@@ -1,3 +1,4 @@
+import { AdressesService } from './common/adresses.service';
 import { OpenfoodService } from './common/openfood.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -13,7 +14,7 @@ export class AppComponent implements OnInit {
   products: any;
 
   map: any;
-  constructor (private service: OpenfoodService) {
+  constructor (private service: OpenfoodService, private service: AdressesService ) {
 
   }
 
