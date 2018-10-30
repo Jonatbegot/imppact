@@ -2,12 +2,10 @@
 <div>
 <div id='body'>
   <div class="row" *ngFor="let product of products | paginate:{itemsPerPage:20, currentPage: page, totalItems: 2127}">
-    <div class="col-sm m-2">
-      <div class="card col-12 col-sm-6 col-lg-4 col-xl-3 text-center" style="max-width: 500px;">
-        <img class="m-2 card-img-top img-thumbnail" src="{{ product.image_url }}" alt="Card image cap Responsive image">
-      </div>
+      <div class="card col-6 col-sm-12 col-lg-6 col-xl-6 text-center" style="max-width: 500px;">
+        <img class="card-img-top img-thumbnail" src="{{ product.image_url }}" alt="Card image cap Responsive image">
     </div>
-    <div class="col-sm m-2">
+    <div class="card col-6 col-sm-12 col-lg-6 col-xl-6">
       <h1>{{products.name}}</h1>
       <hr>
       <h3>Caractéristiques du produit : </h3>
