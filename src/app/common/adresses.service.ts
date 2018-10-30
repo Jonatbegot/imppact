@@ -16,11 +16,11 @@ export class AdressesService {
 
   readAll(): Observable<any> {
 
-    return this.service.get<any>('https://api-adresse.data.gouv.fr');
+    return this.service.get<any>('http://nominatim.openstreetmap.org/reverse.json');
   }
 
   readById(id: string): Observable<any> {
 
-    return this.service.get<any>(`https://api-adresse.data.gouv.fr${id}`);
+    return this.service.get<any>(`http://nominatim.openstreetmap.org/reverse${id}`);
   }
 }
