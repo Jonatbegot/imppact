@@ -13,10 +13,10 @@ export class HouseComponent implements OnInit {
   productName: string;
   houses: House[];
 
-  constructor(private service: OpenfoodService, private houseService: HousesService) { }
+  constructor(private productService: OpenfoodService, private houseService: HousesService) { }
 
   ngOnInit() {
-    this.service.readAll().subscribe(res => {
+    this.productService.readAll().subscribe(res => {
       this.products = res.products;
     });
 
@@ -29,8 +29,17 @@ export class HouseComponent implements OnInit {
     this.houseService.add(houseName, idCandy, this.productName);
   }
 
-  findCandyAllergen(candyID) {
-    return this.service.readByAllergens(candyID);
+  findCandyAllergen(candyName) {
+    const candy = this.products.find(product => product.product_name === candyName);
+    console.log(candy.id);
+    return candy.allergens_from_ingredients ? candy.allergens_from_ingredients : '(aucun spécifié)' ;
   }
 
+  findCandyEnergy(candyName) {
+    const candy = this.products.find(product => product.product_name === candyName);
+    return candy.nutriments.energy;
+  }
+
+  addToBag() {
+  }
 }

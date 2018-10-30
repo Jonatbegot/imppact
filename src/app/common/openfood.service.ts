@@ -296,9 +296,4 @@ export class OpenfoodService {
 
     return this.service.get<any>(`https://sll-api.openfoodfacts.org/category/candies/${id}`);
   }
-
-  readByAllergens(candyName: string): Observable<any> {
-
-    return this.service.get<any>(`https://sll-api.openfoodfacts.org/category/candies/${candyName}`);
-  }
 }

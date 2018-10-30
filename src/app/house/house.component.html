@@ -10,13 +10,15 @@
 
   <div class="row">
     <div class="col-8">
-      <ngb-accordion [closeOthers]="true" activeIds="static-1" *ngFor="let candy of house.bonbons">
-        <ngb-panel id="static-1">
+      <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" *ngFor="let candy of house.bonbons">
+        <ngb-panel>
           <ng-template ngbPanelTitle>
             <span>&#9733; <b>{{ candy.name }}</b> &#9733;</span>
+            <i class="fas fa-shopping-bag" (click)="addToBag()"></i>
           </ng-template>
           <ng-template ngbPanelContent>
-            <p>{{ findCandyAllergen(candy.id) }}</p>
+            <p><strong>Allergènes</strong>&nbsp;: {{ findCandyAllergen(candy.name) }}</p>
+            <p>Énergie&nbsp;: {{ findCandyEnergy(candy.name) }}&nbsp;kcal pour 100g</p>
           </ng-template>
         </ngb-panel>
       </ngb-accordion>
