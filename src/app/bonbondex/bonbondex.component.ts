@@ -10,14 +10,12 @@ export class BonbondexComponent implements OnInit {
 
   products: any;
 
-constructor(private service: OpenfoodService) { }
+  constructor(private service: OpenfoodService) { }
 
-ngOnInit() {
-  this.service.readAll().subscribe(res => {
-    this.products = res.products;
-    console.log(this.products);
-  });
-
-}
-
+  ngOnInit() {
+    this.service.readAll().subscribe(res => {
+      this.products = res.products;
+      console.log(this.products);
+    });
+  }
 }

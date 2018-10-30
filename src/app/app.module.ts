@@ -6,11 +6,13 @@ import { AngularOpenlayersModule } from 'ngx-openlayers';
 
 import { AppComponent } from './app.component';
 import { BonbondexComponent } from './bonbondex/bonbondex.component';
+import { FiltreComponent } from './filtre/filtre.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BonbondexComponent
+    BonbondexComponent,
+    FiltreComponent
   ],
   imports: [
     FormsModule,
