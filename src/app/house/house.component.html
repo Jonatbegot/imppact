@@ -1,0 +1,38 @@
+<section class="container-fluid" *ngFor="let house of houses">
+  <div class="row">
+    <div class="img col-4">
+      <img src="" alt="pic of a haunted house">
+    </div>
+    <div class="address col-8">
+      <h2>{{ house.name }}</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" *ngFor="let candy of house.bonbons">
+        <ngb-panel>
+          <ng-template ngbPanelTitle>
+            <span>&#9733; <b>{{ candy.name }}</b> &#9733;</span>
+            <i class="fas fa-shopping-bag" (click)="addToBag()"></i>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <p><strong>Allergènes</strong>&nbsp;: {{ findCandyAllergen(candy.name) }}</p>
+            <p>Énergie&nbsp;: {{ findCandyEnergy(candy.name) }}&nbsp;kcal pour 100g</p>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+    </div>
+
+    <div class="col-4">
+      <form class="form-inline justify-content-end">
+        <input name="productName" class="fas fa-search form-control awesomplete" list="mylist" type="search"
+          placeholder="Ajouter des bonbons" [(ngModel)]="productName" aria-label="Search">
+        <datalist id="mylist">
+          <option *ngFor="let product of products">{{product.product_name}}</option>
+        </datalist>
+        <button role="submit" class="btn btn-dark" (click)="addCandy(house.name)">Ajouter</button>
+      </form>
+    </div>
+  </div>
+</section>

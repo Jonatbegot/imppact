@@ -12,17 +12,6 @@ export class AppComponent implements OnInit {
   points: Array<{ x: number; y: number; }> = [];
 
   ngOnInit() {
-    // Generate random points
-    const nbPoints = 2000;
-
-
-    // for (let i = 0; i < nbPoints; ++i) {
-    //   this.points.push({
-    //     x: this.getRandomInRange(1.47, 1.51, 4),
-    //     y: this.getRandomInRange(43.545, 43.565, 4)
-    //   });
-    // }
-
     this.findMe();
   }
 
