@@ -10,13 +10,15 @@ import { AppComponent } from './app.component';
 import { BonbondexComponent } from './bonbondex/bonbondex.component';
 import { HouseComponent } from './house/house.component';
 import { FiltreComponent } from './filtre/filtre.component';
+import { BonbondexBagComponent } from './bonbondex-bag/bonbondex-bag.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BonbondexComponent,
     HouseComponent,
-    FiltreComponent
+    FiltreComponent,
+    BonbondexBagComponent
   ],
   imports: [
     FormsModule,

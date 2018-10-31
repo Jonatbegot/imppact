@@ -1,0 +1,20 @@
+<div class="row">
+  <h2 class="card-header col-12 text-center">Bonbons remportés</h2>
+</div>
+<div class="row" *ngFor="let candy of bagItems | paginate:{itemsPerPage:20, currentPage: page, totalItems: 2127}">
+  <div class="card col-6 col-sm-12 col-lg-6 col-xl-6 text-center" style="max-width: 500px;">
+    <img class="card-img-top img-thumbnail" src="{{ candy.image }}" alt="Card image cap Responsive image">
+  </div>
+  <div class="card col-6 col-sm-12 col-lg-6 col-xl-6">
+<hr>
+    <h3>Caractéristiques du produit : </h3>
+    <div>
+      <ul class="list-group">
+        <li class="list-group-item">Nom : {{ candy.name }}</li>
+        <li class="list-group-item">Allergènes : {{ candy.allergens }}</li>
+        <li class="list-group-item">Énergie : {{ candy.energy }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
