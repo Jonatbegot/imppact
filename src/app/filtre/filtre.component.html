@@ -1,6 +1,6 @@
 <form class="form-inline justify-content-end">
     <input name="productName" class="fas fa-search form-control awesomplete" list="mylist" type="search"
-      placeholder="Ou sont les bonbons ?" [(ngModel)]="productName" aria-label="Search">
+      placeholder="Où sont les bonbons ?" [(ngModel)]="productName" aria-label="Search">
     <datalist id="mylist">
       <option *ngFor="let product of products">{{product.product_name}}</option>
     </datalist>

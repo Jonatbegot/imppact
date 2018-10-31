@@ -1,5 +1,7 @@
 import { AdressesService } from './../common/adresses.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { CoordinateComponent } from 'ngx-openlayers';
+import { coordinate } from 'openlayers';
 
 @Component({
   selector: 'app-addadresse',
@@ -13,7 +15,8 @@ export class AddadresseComponent implements OnInit {
   codep: number;
   coordolat: any;
   coordolon: any;
-
+@Output()
+coordinate
 
   constructor(private service: AdressesService) { }
 

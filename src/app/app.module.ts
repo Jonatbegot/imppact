@@ -13,6 +13,7 @@ import { HouseComponent } from './house/house.component';
 import { FiltreComponent } from './filtre/filtre.component';
 import { BonbondexBagComponent } from './bonbondex-bag/bonbondex-bag.component';
 import { AddadresseComponent } from './addadresse/addadresse.component';
+import { CarteComponent } from './carte/carte.component';
 
 const appRoutes: Routes = [
   { path: 'house', component: HouseComponent },
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
     HouseComponent,
     FiltreComponent,
     BonbondexBagComponent,
-    AddadresseComponent
+    AddadresseComponent,
+    CarteComponent
   ],
   imports: [
     FormsModule,
