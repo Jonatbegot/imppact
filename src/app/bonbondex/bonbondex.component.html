@@ -21,11 +21,9 @@
         </div>
       </div>
     </div>
-
-    <div class="pagination">
-      <pagination-controls class="page" previousLabel="" nextLabel="" responsive="true" (pageChange)="onPageChange($event)"></pagination-controls>
+    <div class="pagination text-center">
+      <ngb-pagination [collectionSize]="2127" [maxSize]="5" (pageChange)="onPageChange($event)" [(page)]="page"
+        [directionLinks]="false"></ngb-pagination>
     </div>
   </div>
-
-  {{page}}
 </div>

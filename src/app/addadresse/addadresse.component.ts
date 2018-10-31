@@ -34,10 +34,10 @@ export class AddadresseComponent implements OnInit {
     });
     console.log('lat: ' + this.coordolat);
     console.log('lon: ' + this.coordolon);
-    this.sendEvent();
+    this.sendEvent(this.coordolon, this.coordolat);
   }
 
-  sendEvent() {
+  sendEvent(coordolat, coordolon) {
     const coor = [this.coordolat, this.coordolon];
     console.log('coord : ' + coor);
     this.event.emit(coor);
