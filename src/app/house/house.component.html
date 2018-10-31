@@ -46,7 +46,7 @@
         </div>
       </div>
 
-      <div class="col-12 col-lg-4">
+      <div class="col-12 col-lg-4 form-route">
         <form class="form-inline justify-content-end">
           <input name="productName" class="fas fa-search form-control awesomplete" list="mylist" type="search"
             placeholder="Ajouter des bonbons" [(ngModel)]="productName" aria-label="Search">
@@ -55,6 +55,7 @@
           </datalist>
           <button role="submit" class="btn btn-dark" (click)="addCandy(house.name)">Ajouter</button>
         </form>
+        <button class="btn btn-warning" [routerLink]="['/bonbondex']">Voir mon bonbondex</button>
       </div>
     </div>
   </section>

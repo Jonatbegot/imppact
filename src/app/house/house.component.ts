@@ -63,6 +63,7 @@ export class HouseComponent implements OnInit, OnChanges {
     const candy = this.products.find(product => product.product_name === this.productName);
     const idCandy = candy.id;
     this.houseService.add(houseName, idCandy, this.productName);
+    this.productName = '';
   }
 
   /**
