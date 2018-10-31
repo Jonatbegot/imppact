@@ -12,9 +12,8 @@ export class CarteComponent implements OnInit, OnChanges {
   points: Array<{ x: number; y: number; }> = [];
   lat: any;
   lon: any;
-  // constructor(private component: AddadresseComponent) {
+  content: any;
 
-  // }
   ngOnInit() {
     this.findMe();
     // this.lat = this.component.coordolat;
@@ -49,14 +48,18 @@ export class CarteComponent implements OnInit, OnChanges {
     });
     console.log("points : " + this.points);
   }
-  //   addMarker($event) {
-  //     console.log($event.coordinate);
-  //     const map = $event.map;
 
-  //     map.forEachFeatureAtPixel($event.pixel, (feature, layer) => {
-  //       console.log (feature.getGeometry());
+  doSomething() {
+    console.log('qqch');
+  }
+//   addMarker($event) {
+//     console.log($event.coordinate);
+//     const map = $event.map;
 
-  //     });
-  //     console.log($event)
-  //   }
+//     map.forEachFeatureAtPixel($event.pixel, (feature, layer) => {
+//       console.log (feature.getGeometry());
+
+//     });
+//     console.log($event)
+//   }
 }
