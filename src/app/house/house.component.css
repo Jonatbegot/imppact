@@ -1,3 +1,4 @@
+/*********** images ***************/
 .bag,
 .remove,
 .img-thumbnail {
@@ -8,6 +9,16 @@
   height: auto;
   border: none;
   padding: 0;
+}
+
+.haunted-house {
+  max-width: 100px;
+  height: auto;
+}
+
+.already-added {
+  width: 30px;
+  height: auto;
 }
 
 .bag,
@@ -29,4 +40,8 @@
 btn {
   background-color: white;
   padding: 0;
+}
+
+.btn:disabled {
+  opacity: 0.3 !important;
 }
