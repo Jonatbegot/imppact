@@ -1,7 +1,7 @@
 <div class="row">
   <h2 class="card-header col-12 text-center">Bonbons remportés</h2>
 </div>
-<div class="row w-100 pb-2" *ngFor="let candy of bagItems | paginate:{itemsPerPage:20, currentPage: page, totalItems: 2127}">
+<div class="row w-100 pb-2  ml-1" *ngFor="let candy of bagItems | paginate:{itemsPerPage:20, currentPage: page, totalItems: 2127}">
   <div class="d-flex w-100 flex-md-row card">
     <div class="d-flex justify-content-center align-items-center ml-sm-2 mr-auto ml-auto">
       <img src="{{ candy.image }}" alt="candy's pic">
