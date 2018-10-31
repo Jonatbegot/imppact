@@ -10,20 +10,29 @@
 
   <div class="row">
     <div class="col-8" *ngIf="products">
-      <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" *ngFor="let candy of house.bonbons">
-        <ngb-panel>
-          <ng-template ngbPanelTitle>
-            <img class="card-img-top img-thumbnail" src="{{ findCandyPic(candy.name) }}" alt="photo du bonbon">
-            <span>&#9733; <b>{{ candy.name }}</b> &#9733;</span>
+      <div class="candies row" *ngFor="let candy of house.bonbons">
+        <div class="img-wrapper">
+          <img class="col-2 card-img-top img-thumbnail" src="{{ findCandyPic(candy.name) }}" alt="photo du bonbon">
+        </div>
+        
+        <div class="col-4">
+          <strong>&#9733; <b>{{ candy.name }}</b> &#9733;</strong>
+          <!-- bouton permettant d'obtenir plus d'infos sur le bonbon -->
+          <button type="button" class="btn mt-1" placement="bottom" [ngbPopover]="popContent" [popoverTitle]="popTitle">
+            <img class="btn-infos" src="../../assets/images/infos.png" alt="plus d'infos">
+          </button>
+          <ng-template #popTitle>
+            <strong>Infos sur le bonbon</strong>
           </ng-template>
-          <ng-template ngbPanelContent class="ngb-text">
-            <img class="bag" src="../../assets/images/halloween-151422_1280.png" alt="ajouter le bonbon au bonbondex" title="ajouter le bonbon au bonbondex" (click)="addToBag(candy.name)">
-            <img class="remove" src="../../assets/images/bomb-38216_1280.png" alt="supprimer le bonbon" title="supprimer le bonbon" (click)='removeCandyFromHouse(house.name, candy.name)'>
+          <ng-template #popContent>
             <p><strong>Allergènes</strong>&nbsp;: {{ findCandyAllergen(candy.name) }}</p>
             <p><strong>Énergie&nbsp;:</strong> {{ findCandyEnergy(candy.name) }}&nbsp;kcal pour 100g</p>
           </ng-template>
-        </ngb-panel>
-      </ngb-accordion>
+        </div>
+        <!-- images-boutons suppression et ajout -->
+        <img class="bag" src="../../assets/images/halloween-151422_1280.png" alt="ajouter le bonbon au bonbondex" title="ajouter le bonbon au bonbondex" (click)="addToBag(candy.name)">
+        <img class="remove" src="../../assets/images/bomb-38216_1280.png" alt="supprimer le bonbon" title="supprimer le bonbon de la maison" (click)='removeCandyFromHouse(house.name, candy.name)'>
+      </div>
     </div>
 
     <div class="col-4">

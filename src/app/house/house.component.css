@@ -2,27 +2,34 @@
 .remove,
 .img-thumbnail {
   max-height: 90px;
-  width: auto;
   margin-right: 5px;
+  max-width: 85%;
+  width: auto;
+  height: auto;
+  border: none;
+  padding: 0;
+}
+
+.img-wrapper {
 }
 
 .bag,
 .remove {
-  position: absolute;
   cursor: pointer;
-  z-index: 100;
 }
 
-.bag {
-  right: 15%;
-  transform: translateY(-130px);
+.candies {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 5px;
 }
 
-.remove {
-  right: 5%;
-  transform: translateY(-130px);
+.btn-infos {
+  width: 25px;
+  height: 25px;
 }
 
-.ngb-text {
-  position: relative;
+btn {
+  background-color: white;
+  padding: 0;
 }
