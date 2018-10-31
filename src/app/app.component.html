@@ -1,4 +1,6 @@
-<aol-map class="map">
+<app-filtre></app-filtre>
+<app-addadresse></app-addadresse>
+<aol-map class="map" (onClick)="addMarker($event)">
   <aol-interaction-default></aol-interaction-default>
   <aol-control-defaults></aol-control-defaults>
   <aol-control-fullscreen></aol-control-fullscreen>
@@ -60,7 +62,9 @@
   </aol-layer-vector>
 </aol-map>
 
+
 <app-bonbondex></app-bonbondex>
 <app-house></app-house>
 
-<app-filtre></app-filtre>
+
+

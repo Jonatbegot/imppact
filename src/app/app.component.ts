@@ -15,9 +15,7 @@ export class AppComponent implements OnInit {
     this.findMe();
   }
 
-  getRandomInRange(from, to, fixed) {
-    return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
-  }
+
 
   findMe() {
     if (navigator.geolocation) {
@@ -35,5 +33,14 @@ export class AppComponent implements OnInit {
       y: position.coords.latitude,
     });
   }
+//   addMarker($event) {
+//     console.log($event.coordinate);
+//     const map = $event.map;
 
+//     map.forEachFeatureAtPixel($event.pixel, (feature, layer) => {
+//       console.log (feature.getGeometry());
+
+//     });
+//     console.log($event)
+//   }
 }
