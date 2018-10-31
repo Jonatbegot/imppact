@@ -15,18 +15,16 @@
   <aol-layer-vector>
     <aol-source-cluster [distance]="distance">
       <aol-source-vector>
-        <aol-feature *ngFor="let p of points">
-          <aol-geometry-point>
+        <aol-feature *ngFor="let p of points; let i = index" [id]="i">
+          <aol-geometry-point (click)="doSomething(p)"></aol-geometry-point>
+          <aol-overlay>
             <aol-coordinate [x]="p.x" [y]="p.y" [srid]="'EPSG:4326'"></aol-coordinate>
-          </aol-geometry-point>
-          <!-- for click events -->
-          <!-- <aol-control>
             <aol-content>
-              <div id="controlnameforcssstyling" class="ol-unselectable ol-control">
-                <span (click)="doSomething()">{{ someContent() }}</span>
-              </div>
+              <span (click)="doSomething()">
+                <img src="../../assets/images/witch.png" width="40px" alt="">
+              </span>
             </aol-content>
-          </aol-control> -->
+          </aol-overlay>
         </aol-feature>
       </aol-source-vector>
 
