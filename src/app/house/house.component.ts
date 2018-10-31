@@ -18,6 +18,8 @@ export class HouseComponent implements OnInit, OnChanges {
   alreadyAdded: boolean;
   bag: Bag[];
 
+  spell: boolean;
+
   @Input() address: House;
 
   constructor(private productService: OpenfoodService, private houseService: HousesService, private bagService: BagService) { }
@@ -32,6 +34,7 @@ export class HouseComponent implements OnInit, OnChanges {
     this.bag = this.bagService.get();
 
     this.house = this.houses[0];
+    this.spell = false;
   }
 
   ngOnChanges() {
@@ -122,5 +125,9 @@ export class HouseComponent implements OnInit, OnChanges {
     return false;
   }
 
+
+  castSpell() {
+    this.spell = true;
+  }
 }
 

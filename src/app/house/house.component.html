@@ -5,8 +5,15 @@
       <div class="img col-4">
         <img class="haunted-house" src="../../assets/images/haunted.jpg" alt="pic of a haunted house">
       </div>
-      <div class="address col-6">
+      <div class="address col-5 col-md-4">
         <h2>{{ house.name }}</h2>
+      </div>
+      <div class="col-3 col-md-4" *ngIf="spell">
+        <p class="spell">maison <br>ensorcelée !!!!</p>
+      </div>
+      <div class="spider col-12" *ngIf="spell">
+        <a href="http://www.gifsanimes.com/cat-araignees-292.htm"><img src="http://www.gifsanimes.com/data/media/292/araignee-image-animee-0086.gif"
+            border="0" alt="araignee-image-animee-0086" /></a>
       </div>
     </div>
 
@@ -20,7 +27,7 @@
           <div class="col-9 col-sm-6 col-md-4">
             <strong>&#9733; <b>{{ candy.name }}</b> &#9733;</strong>
             <!-- bouton permettant d'obtenir plus d'infos sur le bonbon -->
-            <button type="button" class="btn btn-question-mark mt-1" placement="right" [ngbPopover]="popContent" [popoverTitle]="popTitle">
+            <button type="button" class="btn btn-question-mark mt-1" placement="bottom" [ngbPopover]="popContent" [popoverTitle]="popTitle">
               <img class="btn-infos" src="../../assets/images/infos.png" alt="plus d'infos">
             </button>
             <ng-template #popTitle>
@@ -47,6 +54,7 @@
       </div>
 
       <div class="col-12 col-lg-4 form-route">
+        <!-- search field -->
         <form class="form-inline justify-content-end">
           <input name="productName" class="fas fa-search form-control awesomplete" list="mylist" type="search"
             placeholder="Ajouter des bonbons" [(ngModel)]="productName" aria-label="Search">
@@ -55,6 +63,9 @@
           </datalist>
           <button role="submit" class="btn btn-dark" (click)="addCandy(house.name)">Ajouter</button>
         </form>
+        <!-- jeter sort -->
+        <button class="btn btn-danger" (click)="castSpell()">JETER UN SORT</button>
+        <!-- voir bonbondex -->
         <button class="btn btn-warning" [routerLink]="['/bonbondex']">Voir mon bonbondex</button>
       </div>
     </div>
