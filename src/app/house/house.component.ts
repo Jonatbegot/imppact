@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { OpenfoodService } from '../common/openfood.service';
 import { HousesService } from '../common/houses.service';
 import { House } from '../common/house';
@@ -10,12 +10,15 @@ import { Bag } from '../common/bag';
   templateUrl: './house.component.html',
   styleUrls: ['./house.component.css']
 })
-export class HouseComponent implements OnInit {
+export class HouseComponent implements OnInit, OnChanges {
   products: any;
   productName: string;
   houses: House[];
+  house: House;
   alreadyAdded: boolean;
   bag: Bag[];
+
+  @Input() address: House;
 
   constructor(private productService: OpenfoodService, private houseService: HousesService, private bagService: BagService) { }
 
@@ -27,6 +30,28 @@ export class HouseComponent implements OnInit {
     this.houses = this.houseService.get();
 
     this.bag = this.bagService.get();
+
+    this.house = this.houses[0];
+  }
+
+  ngOnChanges() {
+
+    this.houses = this.houseService.get();
+
+    this.bag = this.bagService.get();
+
+    this.house = this.houses[0];
+
+    if (this.address) {
+      for (const house of this.houses) {
+        if (this.address.name === house.name) {
+          this.house = this.address;
+        } else {
+          this.houseService.addHouse(this.address);
+          this.house = this.address;
+        }
+      }
+    }
   }
 
   /**

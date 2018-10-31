@@ -32,6 +32,11 @@ export class HousesService {
     return this.houses;
   }
 
+  addHouse(house) {
+    this.houses.push(house);
+    this.saveToLocalStorage(this.houses);
+  }
+
   /**
    *
    * @param houseName

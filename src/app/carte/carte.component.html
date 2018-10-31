@@ -1,4 +1,4 @@
-<app-filtre></app-filtre>
+<!-- <app-filtre></app-filtre> -->
 <aol-map class="map">
   <aol-interaction-default></aol-interaction-default>
   <aol-control-defaults></aol-control-defaults>
@@ -16,11 +16,11 @@
     <aol-source-cluster [distance]="distance">
       <aol-source-vector>
         <aol-feature *ngFor="let p of points; let i = index" [id]="i">
-          <aol-geometry-point (click)="doSomething(p)"></aol-geometry-point>
+          <aol-geometry-point></aol-geometry-point>
           <aol-overlay>
             <aol-coordinate [x]="p.x" [y]="p.y" [srid]="'EPSG:4326'"></aol-coordinate>
             <aol-content>
-              <span (click)="doSomething()">
+              <span (click)="showHouse(p.rue, p.x, p.y)">
                 <img src="../../assets/images/witch.png" width="40px" alt="">
               </span>
             </aol-content>
@@ -59,17 +59,5 @@
   </aol-layer-vector>
 </aol-map>
 
-
-<!-- <aol-feature>
-  <aol-geometry-point>
-    <aol-coordinate [x]="this.lat" [y]="this.lon" [srid]="'EPSG:4326'"></aol-coordinate>
-  </aol-geometry-point>
-  <aol-style>
-    <aol-style-circle [radius]="10">
-      <aol-style-stroke [color]="'black'" [width]="width"></aol-style-stroke>
-      <aol-style-fill [color]="'green'"></aol-style-fill>
-    </aol-style-circle>
-  </aol-style>
-</aol-feature> -->
-
-<app-addadresse (event)="receiveCoord($event)"></app-addadresse>
+<!-- <app-addadresse></app-addadresse> -->
+<app-house [address]="address"></app-house>
