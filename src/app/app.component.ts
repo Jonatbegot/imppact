@@ -1,5 +1,5 @@
+import { AddadresseComponent } from './addadresse/addadresse.component';
 import { Component, OnInit } from '@angular/core';
-
 
 declare var ol: any;
 @Component({
@@ -10,14 +10,18 @@ declare var ol: any;
 export class AppComponent implements OnInit {
   distance = 60;
   points: Array<{ x: number; y: number; }> = [];
+  lat: any;
+  lon: any;
+  // constructor(private component: AddadresseComponent) {
 
+  // }
   ngOnInit() {
     this.findMe();
+    // this.lat = this.component.coordolat;
+    // this.lon = this.component.coordolon;
   }
 
-  getRandomInRange(from, to, fixed) {
-    return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
-  }
+
 
   findMe() {
     if (navigator.geolocation) {
@@ -35,5 +39,14 @@ export class AppComponent implements OnInit {
       y: position.coords.latitude,
     });
   }
+  //   addMarker($event) {
+  //     console.log($event.coordinate);
+  //     const map = $event.map;
 
+  //     map.forEachFeatureAtPixel($event.pixel, (feature, layer) => {
+  //       console.log (feature.getGeometry());
+
+  //     });
+  //     console.log($event)
+  //   }
 }

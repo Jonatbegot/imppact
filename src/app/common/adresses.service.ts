@@ -14,10 +14,12 @@ export class AdressesService {
 
   }
 
-  readAll(lat: number , lon: number): Observable<any> {
+  readAll(num: number , type: string , nom: string , codep: number): Observable<any> {
+
 
     // tslint:disable-next-line:max-line-length
-    return this.service.get<any>(`http://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`);
+    return this.service.get<any>(`https://nominatim.openstreetmap.org/search/fr/${num}%20${type}%20${nom}%20${codep}?format=jsonv2&adressdetails=1&limit=15`);
+
   }
 
   readById(id: string): Observable<any> {

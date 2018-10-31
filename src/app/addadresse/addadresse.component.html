@@ -1,0 +1,21 @@
+<form>
+
+  <div class="form-group">
+    <label for="num">N°</label>
+    <input class="form-control form-control-lg" type="text" placeholder="Numero de rue" [(ngModel)]="num" name='num'>
+  </div>
+  <div class="form-group">
+    <label for="type">rue, avenue</label>
+    <input class="form-control form-control-lg" type="text" placeholder="Type" [(ngModel)]="type" name='type'>
+  </div>
+  <div class="form-group">
+    <label for="nom">Nom</label>
+    <input class="form-control form-control-lg" type="text" placeholder="Nom de la rue" [(ngModel)]="nom" name='nom'>
+  </div>
+  <div class="form-group">
+    <label for="codep">code postal</label>
+    <input class="form-control form-control-lg" type="text" placeholder="code postal" [(ngModel)]="codep" name='cp'>
+  </div>
+
+  <button type="submit" (click) ="envoie()" class="btn btn-primary">créer</button>
+</form>
