@@ -14,12 +14,15 @@ import { FiltreComponent } from './filtre/filtre.component';
 import { BonbondexBagComponent } from './bonbondex-bag/bonbondex-bag.component';
 import { AddadresseComponent } from './addadresse/addadresse.component';
 import { CarteComponent } from './carte/carte.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const appRoutes: Routes = [
   { path: 'house', component: HouseComponent },
   { path: 'carte', component: CarteComponent },
   { path: 'bonbondex', component: BonbondexComponent },
-  { path: '', component: AppComponent },
+  { path: '', component: CarteComponent },
+  { path: '404', component: NotFoundComponent  },
+  { path: '**', redirectTo: '404' },
 ];
 
 @NgModule({
@@ -30,7 +33,8 @@ const appRoutes: Routes = [
     FiltreComponent,
     BonbondexBagComponent,
     AddadresseComponent,
-    CarteComponent
+    CarteComponent,
+    NotFoundComponent
   ],
   imports: [
     FormsModule,

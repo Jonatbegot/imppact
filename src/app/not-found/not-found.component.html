@@ -1,0 +1,37 @@
+<div class="body">
+  <button class="btn btn-warning" [routerLink]="['/carte']">&#8629; vers le site</button>
+
+  <br />
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h2 class="modal-title">Votre mission, si vous l'acceptez</h2>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>
+        <strong>Mission&nbsp;:</strong> récupérer le plus de bonbons
+      </p>
+      <p class="mb-0">
+        <strong>Outils&nbsp;:</strong>
+      </p>
+        <ul>
+          <li>une carte, répertoriant les lieux où trouver des bonbons</li>
+          <li>un descriptif des maisons et des bonbons</li>
+          <li>un bonbondex, où rassembler les bonbons obtenus </li>
+        </ul>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Fermer</button>
+    </div>
+  </ng-template>
+  <button class="btn btn-lg btn-success mt-5" (click)="open(content)">Launch demo modal</button>
+
+  <div class="d-flex justify-content-between mx-auto">
+    <p class="name">Johann</p>
+    <p class="name">Jonathan</p>
+    <p class="name">Emilie</p>
+  </div>
+</div>
