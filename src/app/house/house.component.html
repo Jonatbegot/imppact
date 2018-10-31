@@ -1,58 +1,60 @@
-<section class="container-fluid" *ngFor="let house of houses">
-  <div class="row card-header">
-    <div class="img col-4">
-      <img class="haunted-house" src="../../assets/images/haunted.jpg" alt="pic of a haunted house">
-    </div>
-    <div class="address col-6">
-      <h2>{{ house.name }}</h2>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-8" *ngIf="products">
-      <div class="candies row" *ngFor="let candy of house.bonbons">
-        <div class="img-wrapper">
-          <img class="col-2 card-img-top img-thumbnail" src="{{ findCandyPic(candy.name) }}" alt="photo du bonbon">
-        </div>
-
-        <div class="col-4">
-          <strong>&#9733; <b>{{ candy.name }}</b> &#9733;</strong>
-          <!-- bouton permettant d'obtenir plus d'infos sur le bonbon -->
-          <button type="button" class="btn mt-1" placement="right" [ngbPopover]="popContent" [popoverTitle]="popTitle">
-            <img class="btn-infos" src="../../assets/images/infos.png" alt="plus d'infos">
-          </button>
-          <ng-template #popTitle>
-            <strong>Infos sur le bonbon</strong>
-          </ng-template>
-          <ng-template #popContent>
-            <p><strong>Allergènes</strong>&nbsp;: {{ findCandyAllergen(candy.name) }}</p>
-            <p><strong>Énergie&nbsp;:</strong> {{ findCandyEnergy(candy.name) }}&nbsp;kcal pour 100g</p>
-          </ng-template>
-        </div>
-        <!-- vérifier si bonbon a déjà été ajouté dans le bonbondex -->
-        <p>
-          {{ checkExistant(candy.name) ? 'Vous l\'avez déjà !' : 'Vous ne l\'avez pas encore' }}
-          <img class="already-added" src="{{ alreadyAdded ? '../../assets/images/pumpkin-23439_1280.png' : '../../assets/images/monster-602548_1280.png'}}" alt="">
-        </p>
-        <!-- images-boutons suppression et ajout -->
-        <button class="btn" (click)="addToBag(candy.name)" [disabled]="alreadyAdded" title="ajouter le bonbon au bonbondex">
-          <img class="bag" src="../../assets/images/halloween-151422_1280.png" alt="ajouter le bonbon au bonbondex" >
-        </button>
-        <button class="btn" title="supprimer le bonbon de la maison" (click)='removeCandyFromHouse(house.name, candy.name)'>
-          <img class="remove" src="../../assets/images/bomb-38216_1280.png" alt="supprimer le bonbon">
-        </button>
+<div class="body">
+  <section class="container-fluid px-2 px-sm-3 px-md-4 px-lg-5" *ngFor="let house of houses">
+    <div class="row card-header">
+      <div class="img col-4">
+        <img class="haunted-house" src="../../assets/images/haunted.jpg" alt="pic of a haunted house">
+      </div>
+      <div class="address col-6">
+        <h2>{{ house.name }}</h2>
       </div>
     </div>
 
-    <div class="col-4">
-      <form class="form-inline justify-content-end">
-        <input name="productName" class="fas fa-search form-control awesomplete" list="mylist" type="search"
-          placeholder="Ajouter des bonbons" [(ngModel)]="productName" aria-label="Search">
-        <datalist id="mylist">
-          <option *ngFor="let product of products">{{product.product_name}}</option>
-        </datalist>
-        <button role="submit" class="btn btn-dark" (click)="addCandy(house.name)">Ajouter</button>
-      </form>
+    <div class="row">
+      <div class="col-12 col-lg-8" *ngIf="products">
+        <div class="candies row" *ngFor="let candy of house.bonbons">
+          <div class="img-wrapper col-3 col-sm-2 col-md-2 ">
+            <img class="card-img-top img-thumbnail" src="{{ findCandyPic(candy.name) }}" alt="photo du bonbon">
+          </div>
+
+          <div class="col-9 col-sm-6 col-md-4">
+            <strong>&#9733; <b>{{ candy.name }}</b> &#9733;</strong>
+            <!-- bouton permettant d'obtenir plus d'infos sur le bonbon -->
+            <button type="button" class="btn btn-question-mark mt-1" placement="right" [ngbPopover]="popContent" [popoverTitle]="popTitle">
+              <img class="btn-infos" src="../../assets/images/infos.png" alt="plus d'infos">
+            </button>
+            <ng-template #popTitle>
+              <strong class="text-dark">Infos sur le bonbon</strong>
+            </ng-template>
+            <ng-template #popContent>
+              <p><strong>Allergènes</strong>&nbsp;: {{ findCandyAllergen(candy.name) }}</p>
+              <p><strong>Énergie&nbsp;:</strong> {{ findCandyEnergy(candy.name) }}&nbsp;kcal pour 100g</p>
+            </ng-template>
+          </div>
+          <!-- vérifier si bonbon a déjà été ajouté dans le bonbondex -->
+          <p class="col-12 col-sm-4 col-md-2 text-center">
+            {{ checkExistant(candy.name) ? 'Vous l\'avez déjà&nbsp;!' : 'Vous ne l\'avez pas encore' }}
+            <img class="already-added" src="{{ alreadyAdded ? '../../assets/images/pumpkin-23439_1280.png' : '../../assets/images/monster-602548_1280.png'}}" alt="">
+          </p>
+          <!-- images-boutons suppression et ajout -->
+          <button class="btn col-5 offset-1 offset-md-0 col-md-2" (click)="addToBag(candy.name)" [disabled]="alreadyAdded" title="ajouter le bonbon au bonbondex">
+            <img class="bag" src="../../assets/images/halloween-151422_1280.png" alt="ajouter le bonbon au bonbondex" >
+          </button>
+          <button class="btn col-5 col-md-2" title="supprimer le bonbon de la maison" (click)='removeCandyFromHouse(house.name, candy.name)'>
+            <img class="remove" src="../../assets/images/bomb-38216_1280.png" alt="supprimer le bonbon">
+          </button>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4">
+        <form class="form-inline justify-content-end">
+          <input name="productName" class="fas fa-search form-control awesomplete" list="mylist" type="search"
+            placeholder="Ajouter des bonbons" [(ngModel)]="productName" aria-label="Search">
+          <datalist id="mylist">
+            <option *ngFor="let product of products">{{product.product_name}}</option>
+          </datalist>
+          <button role="submit" class="btn btn-dark" (click)="addCandy(house.name)">Ajouter</button>
+        </form>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
