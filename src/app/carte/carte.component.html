@@ -1,5 +1,4 @@
 <app-filtre></app-filtre>
-<app-addadresse></app-addadresse>
 <aol-map class="map">
   <aol-interaction-default></aol-interaction-default>
   <aol-control-defaults></aol-control-defaults>
@@ -75,4 +74,4 @@
   </aol-style>
 </aol-feature> -->
 
-<app-addadresse></app-addadresse>
+<app-addadresse (event)="receiveCoord($event)"></app-addadresse>

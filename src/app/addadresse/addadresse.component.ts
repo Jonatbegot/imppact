@@ -1,7 +1,5 @@
 import { AdressesService } from './../common/adresses.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { CoordinateComponent } from 'ngx-openlayers';
-import { coordinate } from 'openlayers';
 
 @Component({
   selector: 'app-addadresse',
@@ -15,21 +13,33 @@ export class AddadresseComponent implements OnInit {
   codep: number;
   coordolat: any;
   coordolon: any;
-@Output()
-coordinate
+
+  @Output()
+  event: EventEmitter<any> = new EventEmitter();
 
   constructor(private service: AdressesService) { }
 
   ngOnInit() {
   }
-envoie () {
-  this.service.readAll(this.num , this.type , this.nom , this.codep).subscribe(res => {
-    this.coordolat = res[0].lat ;
-    this.coordolon = res[0].lon ;
-    console.log (res[0].lat );
-    console.log (res[0].lon );
-  });
+  /**
+   * recup lon et lat dans l'api,
+   * puis envoie données vers la carte
+   */
+  envoie() {
+    this.coordolat = this.service.readAll(this.num , this.type , this.nom , this.codep).subscribe(res => {
+      return res[0].lat ;
+    });
+    this.coordolon = this.service.readAll(this.num, this.type, this.nom, this.codep).subscribe(res => {
+      return res[0].lon;
+    });
+    console.log('lat: ' + this.coordolat);
+    console.log('lon: ' + this.coordolon);
+    this.sendEvent();
+  }
 
-
-}
+  sendEvent() {
+    const coor = [this.coordolat, this.coordolon];
+    console.log('coord : ' + coor);
+    this.event.emit(coor);
+  }
 }

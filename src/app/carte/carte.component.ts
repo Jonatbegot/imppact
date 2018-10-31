@@ -1,5 +1,5 @@
 import { AddadresseComponent } from '../addadresse/addadresse.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 
 declare var ol: any;
 @Component({
@@ -7,7 +7,7 @@ declare var ol: any;
   templateUrl: './carte.component.html',
   styleUrls: ['./carte.component.css']
 })
-export class CarteComponent implements OnInit {
+export class CarteComponent implements OnInit, OnChanges {
   distance = 60;
   points: Array<{ x: number; y: number; }> = [];
   lat: any;
@@ -21,7 +21,8 @@ export class CarteComponent implements OnInit {
     // this.lon = this.component.coordolon;
   }
 
-
+  ngOnChanges() {
+  }
 
   findMe() {
     if (navigator.geolocation) {
@@ -38,6 +39,15 @@ export class CarteComponent implements OnInit {
       x: position.coords.longitude,
       y: position.coords.latitude,
     });
+  }
+
+  receiveCoord($event) {
+    console.log($event);
+    this.points.push({
+      x: $event[1],
+      y: $event[0],
+    });
+    console.log("points : " + this.points);
   }
   //   addMarker($event) {
   //     console.log($event.coordinate);

@@ -17,8 +17,9 @@ import { CarteComponent } from './carte/carte.component';
 
 const appRoutes: Routes = [
   { path: 'house', component: HouseComponent },
+  { path: 'carte', component: CarteComponent },
   { path: 'bonbondex', component: BonbondexComponent },
-  { path: '', component: AppComponent }
+  { path: '', component: AppComponent },
 ];
 
 @NgModule({
