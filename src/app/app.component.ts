@@ -1,5 +1,5 @@
+import { AddadresseComponent } from './addadresse/addadresse.component';
 import { Component, OnInit } from '@angular/core';
-
 
 declare var ol: any;
 @Component({
@@ -10,7 +10,12 @@ declare var ol: any;
 export class AppComponent implements OnInit {
   distance = 60;
   points: Array<{ x: number; y: number; }> = [];
-
+  lat: any;
+  lon: any;
+constructor (private component: AddadresseComponent) {
+this.lat = this.component.coordolat;
+this.lon = this.component.coordolon;
+ }
   ngOnInit() {
     this.findMe();
   }
