@@ -1,19 +1,20 @@
 <div class="row">
   <h2 class="card-header col-12 text-center">Bonbons remportés</h2>
 </div>
-<div class="row" *ngFor="let candy of bagItems | paginate:{itemsPerPage:20, currentPage: page, totalItems: 2127}">
-  <div class="card col-6 col-sm-12 col-lg-6 col-xl-6 text-center" style="max-width: 500px;">
-    <img class="card-img-top img-thumbnail" src="{{ candy.image }}" alt="Card image cap Responsive image">
-  </div>
-  <div class="card col-6 col-sm-12 col-lg-6 col-xl-6">
-<hr>
-    <h3>Caractéristiques du produit : </h3>
-    <div>
-      <ul class="list-group">
-        <li class="list-group-item">Nom : {{ candy.name }}</li>
-        <li class="list-group-item">Allergènes : {{ candy.allergens }}</li>
-        <li class="list-group-item">Énergie : {{ candy.energy }}</li>
-      </ul>
+<div class="row w-100 pb-2" *ngFor="let candy of bagItems | paginate:{itemsPerPage:20, currentPage: page, totalItems: 2127}">
+  <div class="d-flex w-100 flex-md-row card">
+    <div class="d-flex justify-content-center align-items-center ml-sm-2 mr-auto ml-auto">
+      <img src="{{ candy.image }}" alt="candy's pic">
+    </div>
+    <div class="mx-auto">
+      <h5 class="pt-2 text-white">Caractéristiques du bonbon : </h5>
+      <div>
+        <ul class="list-group">
+          <li class="list-group-item">Nom : {{ candy.name }}</li>
+          <li class="list-group-item">Allergènes : {{ candy.allergens }}</li>
+          <li class="list-group-item">Énergie : {{ candy.energy }}</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

@@ -1,29 +1,31 @@
-
-<!-- <div> div en trop ??? -->
-<div id='body'>
-  <app-bonbondex-bag></app-bonbondex-bag>
-  <div class="row">
-    <h2 class="card-header col-12 text-center">Bonbons existants</h2>
-  </div>
-  <div class="row" *ngFor="let product of products | paginate:{itemsPerPage:20, currentPage: page, totalItems: 2127}">
-      <div class="card col-6 col-sm-12 col-lg-6 col-xl-6 text-center" style="max-width: 500px;">
-        <img class="card-img-top img-thumbnail" src="{{ product.image_url }}" alt="Card image cap Responsive image">
+<div class="body">
+  <div class="container">
+    <app-bonbondex-bag></app-bonbondex-bag>
+    <div class="row">
+      <h2 class="card-header col-12 text-center">Bonbons existants</h2>
     </div>
-    <div class="card col-6 col-sm-12 col-lg-6 col-xl-6">
-      <h1>{{products.name}}</h1>
-      <hr>
-      <h3>Caractéristiques du produit : </h3>
-      <div>
-        <ul class="list-group">
-          <li class="list-group-item">Nom : {{ product.product_name }}</li>
-          <li class="list-group-item">Catégorie : {{ product.categories }}</li>
-          <li class="list-group-item">Allergènes : {{ product.allergens_tags }}</li>
-        </ul>
+    <div class="d-flex w-100 pb-2" *ngFor="let product of products | paginate:{itemsPerPage:20, currentPage: page, totalItems: 2127}">
+      <div class="d-flex w-100 flex-md-row card">
+        <div class="d-flex justify-content-center align-items-center ml-sm-2 mr-auto ml-auto">
+          <img src="{{ product.image_url }}" alt="candy's pic">
+        </div>
+        <div class="mx-auto">
+          <h5 class="pt-2 text-white">Caractéristiques du bonbon : </h5>
+          <div>
+            <ul class="list-group">
+              <li class="list-group-item">Nom : {{ product.product_name }}</li>
+              <li class="list-group-item">Allergènes : {{ product.allergens_tags }}</li>
+              <li class="list-group-item">Énergie : {{ product.nutriments.energy }}</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div class="pagination">
+      <pagination-controls class="page" previousLabel="" nextLabel="" responsive="true" (pageChange)="onPageChange($event)"></pagination-controls>
+    </div>
   </div>
 
-  <pagination-controls previousLabel="" nextLabel="" responsive="true" (pageChange)="onPageChange($event)"></pagination-controls>
+  {{page}}
 </div>
-
-{{page}}
