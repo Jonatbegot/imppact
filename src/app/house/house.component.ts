@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OpenfoodService } from '../common/openfood.service';
 import { HousesService } from '../common/houses.service';
 import { House } from '../common/house';
+import { BagService } from '../common/bag.service';
 
 @Component({
   selector: 'app-house',
@@ -13,7 +14,7 @@ export class HouseComponent implements OnInit {
   productName: string;
   houses: House[];
 
-  constructor(private productService: OpenfoodService, private houseService: HousesService) { }
+  constructor(private productService: OpenfoodService, private houseService: HousesService, private bagService: BagService) { }
 
   ngOnInit() {
     this.productService.readAll().subscribe(res => {
@@ -23,15 +24,24 @@ export class HouseComponent implements OnInit {
     this.houses = this.houseService.get();
   }
 
+  /**
+   *
+   * @param houseName
+   * add candy selected in the search field
+   */
   addCandy(houseName): void {
     const candy = this.products.find(product => product.product_name === this.productName);
     const idCandy = candy.id;
     this.houseService.add(houseName, idCandy, this.productName);
   }
 
+  removeCandyFromHouse(houseName, candyName): void {
+    this.houseService.delete(houseName, candyName);
+  }
+
+
   findCandyAllergen(candyName) {
     const candy = this.products.find(product => product.product_name === candyName);
-    console.log(candy.id);
     return candy.allergens_from_ingredients ? candy.allergens_from_ingredients : '(aucun spécifié)' ;
   }
 
@@ -45,6 +55,12 @@ export class HouseComponent implements OnInit {
     return candy.image_url;
   }
 
-  addToBag() {
+  addToBag(candyName): void {
+    const candy = this.products.find(product => product.product_name === candyName);
+    const name = candy.product_name;
+    const image = candy.image_url;
+    const allergen = candy.allergens_from_ingredients ? candy.allergens_from_ingredients : '(aucun spécifié)';
+    const energy = candy.nutriments.energy;
+    this.bagService.add(name, image, allergen, energy);
   }
 }

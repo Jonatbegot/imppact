@@ -32,16 +32,28 @@ export class HousesService {
     return this.houses;
   }
 
+  /**
+   *
+   * @param houseName
+   * @param candyID
+   * @param candyName
+   * add a candy to designated house
+   */
   add(houseName: string, candyID: string, candyName: string) {
     const houseToUpdate = this.houses.find(house => house.name === houseName);
     const index = this.houses.indexOf(houseToUpdate);
     this.houses[index].bonbons.push(new Bonbons(candyID, candyName));
     this.saveToLocalStorage(this.houses);
   }
-
-  delete(house: House) {
-    const index = this.houses.findIndex(x => x.name === house.name);
-    this.houses.splice(index, 1);
+  /**
+   *
+   * @param house
+   * remove a candy from designated house
+   */
+  delete(house: string, candy: string) {
+    const indexHouse = this.houses.findIndex(x => x.name === house);
+    const indexCandy = this.houses[indexHouse].bonbons.findIndex(x => x.name === candy);
+    this.houses[indexHouse].bonbons.splice(indexCandy, 1);
     this.saveToLocalStorage(this.houses);
   }
 }

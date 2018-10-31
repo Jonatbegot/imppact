@@ -1,5 +1,28 @@
-.img-houses {
+.bag,
+.remove,
+.img-thumbnail {
   max-height: 90px;
   width: auto;
   margin-right: 5px;
+}
+
+.bag,
+.remove {
+  position: absolute;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.bag {
+  right: 15%;
+  transform: translateY(-130px);
+}
+
+.remove {
+  right: 5%;
+  transform: translateY(-130px);
+}
+
+.ngb-text {
+  position: relative;
 }

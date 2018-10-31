@@ -9,17 +9,18 @@
   </div>
 
   <div class="row">
-    <div class="col-8">
+    <div class="col-8" *ngIf="products">
       <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" *ngFor="let candy of house.bonbons">
         <ngb-panel>
           <ng-template ngbPanelTitle>
-            <img class="card-img-top img-thumbnail img-houses" src="{{ findCandyPic(candy.name) }}" alt="Card image cap Responsive image">
+            <img class="card-img-top img-thumbnail" src="{{ findCandyPic(candy.name) }}" alt="photo du bonbon">
             <span>&#9733; <b>{{ candy.name }}</b> &#9733;</span>
-            <img class="img-houses" src="../../assets/images/halloween-151422_1280.png" alt="Card image cap Responsive image">
           </ng-template>
-          <ng-template ngbPanelContent>
+          <ng-template ngbPanelContent class="ngb-text">
+            <img class="bag" src="../../assets/images/halloween-151422_1280.png" alt="ajouter le bonbon au bonbondex" title="ajouter le bonbon au bonbondex" (click)="addToBag(candy.name)">
+            <img class="remove" src="../../assets/images/bomb-38216_1280.png" alt="supprimer le bonbon" title="supprimer le bonbon" (click)='removeCandyFromHouse(house.name, candy.name)'>
             <p><strong>Allergènes</strong>&nbsp;: {{ findCandyAllergen(candy.name) }}</p>
-            <p>Énergie&nbsp;: {{ findCandyEnergy(candy.name) }}&nbsp;kcal pour 100g</p>
+            <p><strong>Énergie&nbsp;:</strong> {{ findCandyEnergy(candy.name) }}&nbsp;kcal pour 100g</p>
           </ng-template>
         </ngb-panel>
       </ngb-accordion>
