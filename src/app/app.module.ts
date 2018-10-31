@@ -5,12 +5,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularOpenlayersModule } from 'ngx-openlayers';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { BonbondexComponent } from './bonbondex/bonbondex.component';
 import { HouseComponent } from './house/house.component';
 import { FiltreComponent } from './filtre/filtre.component';
 import { BonbondexBagComponent } from './bonbondex-bag/bonbondex-bag.component';
+
+
+const appRoutes: Routes = [
+  { path: 'house', component: HouseComponent },
+  { path: 'bonbondex', component: BonbondexComponent },
+  { path: '', component: AppComponent }
+];
 
 @NgModule({
   declarations: [
@@ -26,7 +34,8 @@ import { BonbondexBagComponent } from './bonbondex-bag/bonbondex-bag.component';
     HttpClientModule,
     AngularOpenlayersModule,
     NgxPaginationModule,
-    NgbModule
+    NgbModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
