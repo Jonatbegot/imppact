@@ -1,5 +1,47 @@
-.img-houses {
+/*********** images ***************/
+.bag,
+.remove,
+.img-thumbnail {
   max-height: 90px;
-  width: auto;
   margin-right: 5px;
+  max-width: 85%;
+  width: auto;
+  height: auto;
+  border: none;
+  padding: 0;
+}
+
+.haunted-house {
+  max-width: 100px;
+  height: auto;
+}
+
+.already-added {
+  width: 30px;
+  height: auto;
+}
+
+.bag,
+.remove {
+  cursor: pointer;
+}
+
+.candies {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 5px;
+}
+
+.btn-infos {
+  width: 25px;
+  height: 25px;
+}
+
+btn {
+  background-color: white;
+  padding: 0;
+}
+
+.btn:disabled {
+  opacity: 0.3 !important;
 }
