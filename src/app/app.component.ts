@@ -12,12 +12,13 @@ export class AppComponent implements OnInit {
   points: Array<{ x: number; y: number; }> = [];
   lat: any;
   lon: any;
-constructor (private component: AddadresseComponent) {
-this.lat = this.component.coordolat;
-this.lon = this.component.coordolon;
- }
+  // constructor(private component: AddadresseComponent) {
+
+  // }
   ngOnInit() {
     this.findMe();
+    // this.lat = this.component.coordolat;
+    // this.lon = this.component.coordolon;
   }
 
 
@@ -38,14 +39,14 @@ this.lon = this.component.coordolon;
       y: position.coords.latitude,
     });
   }
-//   addMarker($event) {
-//     console.log($event.coordinate);
-//     const map = $event.map;
+  //   addMarker($event) {
+  //     console.log($event.coordinate);
+  //     const map = $event.map;
 
-//     map.forEachFeatureAtPixel($event.pixel, (feature, layer) => {
-//       console.log (feature.getGeometry());
+  //     map.forEachFeatureAtPixel($event.pixel, (feature, layer) => {
+  //       console.log (feature.getGeometry());
 
-//     });
-//     console.log($event)
-//   }
+  //     });
+  //     console.log($event)
+  //   }
 }
