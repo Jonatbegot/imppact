@@ -32,3 +32,8 @@ p, ul li {
 .modal-dialog {
   max-width: 700px;}
 
+h1 {
+  font-size: 5rem;
+  text-align: center;
+  color: #70d870;
+}
